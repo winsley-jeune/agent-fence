@@ -10,6 +10,7 @@ SUITES = [
     ("block_scan.py", "cases_scan.jsonl"),
     ("block_sensitive_files.py", "cases_sensitive.jsonl"),
     ("block_destructive.py", "cases_destructive.jsonl"),
+    ("block_ai_coauthor.py", "cases_ai_coauthor.jsonl"),
 ]
 
 

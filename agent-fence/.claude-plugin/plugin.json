@@ -1,7 +1,7 @@
 {
   "name": "agent-fence",
   "version": "0.1.0",
-  "description": "Blocks network scanning, sensitive-file access, and destructive commands for Claude Code agent sessions.",
+  "description": "Blocks network scanning, sensitive-file access, destructive commands, and AI co-author commit attribution for Claude Code agent sessions.",
   "author": {
     "name": "wjeune"
   },

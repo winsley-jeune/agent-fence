@@ -27,6 +27,15 @@
             "command": "python -I \"${CLAUDE_PLUGIN_ROOT}\"/scripts/block_destructive.py"
           }
         ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -I \"${CLAUDE_PLUGIN_ROOT}\"/scripts/block_ai_coauthor.py"
+          }
+        ]
       }
     ]
   }

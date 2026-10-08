@@ -1,0 +1,6 @@
+{"name": "git commit with Claude co-author trailer", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "git commit -m \"$(cat <<'EOF'\nfix thing\n\nCo-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>\nEOF\n)\""}}}
+{"name": "git commit --amend with Anthropic co-author trailer", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "git commit --amend -m \"fix\n\nCo-Authored-By: Anthropic <noreply@anthropic.com>\""}}}
+{"name": "git commit with lowercase co-authored-by claude", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "git commit -m \"fix\n\nco-authored-by: claude <noreply@anthropic.com>\""}}}
+{"name": "git commit with human co-author allowed", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "git commit -m \"fix\n\nCo-Authored-By: Jane Doe <jane@example.com>\""}}}
+{"name": "normal git commit allowed", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "git commit -m \"fix typo\""}}}
+{"name": "the phrase Claude outside a git commit is not blocked", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo 'Co-Authored-By: Claude' > notes.txt"}}}

@@ -66,6 +66,14 @@ DEFAULTS = {
         },
         "allow": [],  # list of regexes; a match on the full command allows it unconditionally
     },
+    "block_ai_coauthor": {
+        "enabled": True,
+        "action": "deny",
+        "rules": {
+            "ai_coauthor_trailer": True,
+        },
+        "allow": [],  # list of regexes; a match on the full command allows it unconditionally
+    },
 }
 
 

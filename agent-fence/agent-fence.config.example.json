@@ -44,5 +44,13 @@
       "format_volume": true
     },
     "allow": []
+  },
+  "block_ai_coauthor": {
+    "enabled": true,
+    "action": "deny",
+    "rules": {
+      "ai_coauthor_trailer": true
+    },
+    "allow": []
   }
 }
