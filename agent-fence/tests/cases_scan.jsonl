@@ -1,0 +1,12 @@
+{"name": "nmap", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "nmap -sS 10.0.0.0/24"}}}
+{"name": "masscan", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "masscan -p1-65535 10.0.0.0/8"}}}
+{"name": "recurse C:\\ backslash root", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "Get-ChildItem -Path C:\\ -Recurse"}}}
+{"name": "recurse C:/ forward slash root", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "Get-ChildItem -Path C:/ -Recurse"}}}
+{"name": "find root", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "find / -name *.key"}}}
+{"name": "other user profile recursive", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "dir C:\\Users\\otheruser /s"}}}
+{"name": "recurse Windows dir", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "Get-ChildItem -Path C:\\Windows -Recurse"}}}
+{"name": "normal git", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "git status"}}}
+{"name": "recurse own Desktop", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "Get-ChildItem -Path C:\\Users\\wjeune\\Desktop -Recurse"}}}
+{"name": "ls cwd", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "ls -la"}}}
+{"name": "npm install", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "npm install --save-dev prettier"}}}
+{"name": "single Test-NetConnection", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "Test-NetConnection github.com -Port 443"}}}

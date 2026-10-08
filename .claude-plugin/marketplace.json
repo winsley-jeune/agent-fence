@@ -1,0 +1,14 @@
+{
+  "name": "local-plugins",
+  "owner": {
+    "name": "Winsley jeune"
+  },
+  "description": "Local, machine-specific Claude Code plugins.",
+  "plugins": [
+    {
+      "name": "agent-fence",
+      "source": "./agent-fence",
+      "description": "Blocks network scanning, sensitive-file access, and destructive commands during Claude Code sessions."
+    }
+  ]
+}

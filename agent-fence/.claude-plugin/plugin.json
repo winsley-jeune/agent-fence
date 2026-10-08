@@ -1,0 +1,10 @@
+{
+  "name": "agent-fence",
+  "version": "0.1.0",
+  "description": "Blocks network scanning, sensitive-file access, and destructive commands for Claude Code agent sessions.",
+  "author": {
+    "name": "wjeune"
+  },
+  "license": "MIT",
+  "keywords": ["security", "guardrails", "hooks", "sensitive-files", "sandbox"]
+}

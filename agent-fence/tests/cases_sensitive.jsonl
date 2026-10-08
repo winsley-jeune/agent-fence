@@ -1,0 +1,32 @@
+{"name": "Read .env", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\.env"}}}
+{"name": "Read .env.example allowed", "expect": "allow", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\.env.example"}}}
+{"name": "Read demo credentials json", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\.demo-credentials.json"}}}
+{"name": "Read id_rsa", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.ssh\\id_rsa"}}}
+{"name": "Read id_rsa.pub allowed", "expect": "allow", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.ssh\\id_rsa.pub"}}}
+{"name": "Read inside .ssh dir other file", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.ssh\\config"}}}
+{"name": "Read aws credentials", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.aws\\credentials"}}}
+{"name": "Read pem file", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\server.pem"}}}
+{"name": "Read normal source file", "expect": "allow", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\src\\index.ts"}}}
+{"name": "Grep over .env", "expect": "deny", "payload": {"tool_name": "Grep", "tool_input": {"path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\.env", "pattern": "KEY"}}}
+{"name": "Grep normal dir", "expect": "allow", "payload": {"tool_name": "Grep", "tool_input": {"path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\src", "pattern": "TODO"}}}
+{"name": "Bash cat .env", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "cat .env"}}}
+{"name": "Bash type demo credentials", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "type .demo-credentials.json"}}}
+{"name": "PowerShell Get-Content aws creds", "expect": "deny", "payload": {"tool_name": "PowerShell", "tool_input": {"command": "Get-Content C:\\Users\\wjeune\\.aws\\credentials"}}}
+{"name": "Bash normal ls", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "ls -la"}}}
+{"name": "Bash git status", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "git status"}}}
+{"name": "Read secrets-named config allowed placeholder", "expect": "allow", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\secrets.example.yaml"}}}
+{"name": "Read real secrets yaml", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\Desktop\\agent-pay\\secrets.yaml"}}}
+{"name": "dd with if=.env (equals sign)", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "dd if=.env bs=1 count=200"}}}
+{"name": "glob wildcard instead of literal name", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "cat .e*"}}}
+{"name": "glob single-char wildcard", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "cat .??v"}}}
+{"name": "env var expansion of home then path", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "cat $HOME/.claude/hooks/.env"}}}
+{"name": "Read tool with NTFS ADS suffix trick", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.claude\\hooks\\.env::$DATA"}}}
+{"name": "Read tool with trailing dot/space trick", "expect": "deny", "payload": {"tool_name": "Read", "tool_input": {"file_path": "C:\\Users\\wjeune\\.claude\\hooks\\.env "}}}
+{"name": "double-quoted path split mid-token", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "cat \".e\"\"nv\""}}}
+{"name": "xxd byte dump instead of cat", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "xxd .env"}}}
+{"name": "command substitution paren-wrapped", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo $(cat .env)"}}}
+{"name": "no-space command chaining semicolon", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo hi;cat .env"}}}
+{"name": "no-space command chaining and-and", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo hi&&cat .env"}}}
+{"name": "adjacent quote concat no-space chained", "expect": "deny", "payload": {"tool_name": "Bash", "tool_input": {"command": "true&&cat \".e\"\"nv\""}}}
+{"name": "echo text containing word SECRET is not a file path (false positive regression)", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo DUMMY_SECRET=realvalue > notes.txt"}}}
+{"name": "echo text containing word credential is not a file path (false positive regression)", "expect": "allow", "payload": {"tool_name": "Bash", "tool_input": {"command": "echo MY_CREDENTIAL_VAR=1"}}}

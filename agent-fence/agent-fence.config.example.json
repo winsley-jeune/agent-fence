@@ -1,0 +1,48 @@
+{
+  "block_scan": {
+    "enabled": true,
+    "action": "deny",
+    "rules": {
+      "scan_tools": true,
+      "foreign_user_profile": true,
+      "recurse_drive_root": true,
+      "recurse_system_dir": true,
+      "root_scan_posix": true
+    },
+    "allow": []
+  },
+  "block_sensitive_files": {
+    "enabled": true,
+    "action": "deny",
+    "rules": {
+      "env_files": true,
+      "ssh_keys": true,
+      "key_files": true,
+      "token_dotfiles": true,
+      "wallet_files": true,
+      "credentials_dir": true,
+      "generic_credentials_name": true
+    },
+    "allow_paths": []
+  },
+  "block_destructive": {
+    "enabled": true,
+    "action": "deny",
+    "rules": {
+      "git_reset_hard": true,
+      "git_clean_force": true,
+      "git_push_force": true,
+      "rm_rf_root": true,
+      "chmod_777": true,
+      "curl_pipe_shell": true,
+      "fork_bomb": true,
+      "mkfs": true,
+      "crontab_r": true,
+      "docker_volume_prune": true,
+      "docker_system_prune": true,
+      "remove_item_recurse_force_root": true,
+      "format_volume": true
+    },
+    "allow": []
+  }
+}
